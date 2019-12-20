@@ -4,9 +4,9 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.PermissionChecker;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.PermissionChecker;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.seu.magiccamera.activity.CameraActivity;
@@ -26,12 +26,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (PermissionChecker.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA)
-                        == PackageManager.PERMISSION_DENIED) {
+                        == PermissionChecker.PERMISSION_DENIED) {
                     ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA},
                             CAMERA_REQUEST);
                 } else {
                     startActivity(new Intent(MainActivity.this, CameraActivity.class));
                 }
+            }
+        });
+
+
+        findViewById(R.id.btn_camerax).setOnClickListener((v)->{
+            if (PermissionChecker.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA)
+                    == PermissionChecker.PERMISSION_DENIED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA},
+                        CAMERA_REQUEST);
+            } else {
+                startActivity(new Intent(MainActivity.this, CameraActivity.class));
             }
         });
     }

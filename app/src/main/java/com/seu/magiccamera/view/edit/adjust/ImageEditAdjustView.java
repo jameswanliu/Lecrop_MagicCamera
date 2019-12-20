@@ -31,11 +31,15 @@ public class ImageEditAdjustView extends ImageEditFragment {
 	private ImageView mLabel;
 	private TextView mVal;
 	private LinearLayout mLinearLayout;
-	
+
 	public ImageEditAdjustView(Context context) {
 		super(context);
 	}
-	
+
+	//	public ImageEditAdjustView(Context context) {
+//		super(context);
+//	}
+//
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
