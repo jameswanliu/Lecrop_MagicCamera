@@ -177,7 +177,7 @@ class CameraXActivity : AppCompatActivity() {
             duration = 200
             addListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator) {
-                    findViewById<View>(R.id.btn_camera_shutter).isClickable = false
+                 btn_camera_shutter.isClickable = false
                     layout_filter.visibility = View.VISIBLE
                 }
 
@@ -204,12 +204,12 @@ class CameraXActivity : AppCompatActivity() {
                 override fun onAnimationRepeat(animation: Animator) = Unit
                 override fun onAnimationEnd(animation: Animator) {
                     layout_filter.visibility = View.INVISIBLE
-                    findViewById<View>(R.id.btn_camera_shutter).isClickable = true
+                    btn_camera_shutter.isClickable = true
                 }
 
                 override fun onAnimationCancel(animation: Animator) {
                     layout_filter.visibility = View.INVISIBLE
-                    findViewById<View>(R.id.btn_camera_shutter).isClickable = true
+                    btn_camera_shutter.isClickable = true
                 }
             })
             start()
