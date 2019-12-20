@@ -1,0 +1,61 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+
+
+
+    buildTypes {
+        release {
+            minifyEnabled = false
+            proguardFiles.add(file('proguard-rules.txt'))
+        }
+    }
+
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+//android.ndk {
+//    moduleName = "MagicBeautify"
+//    cppFlags.add("-DANDROID_NDK")
+//    cppFlags.add("-D_DEBUG")
+//    ldLibs.add("log")
+//    ldLibs.add("jnigraphics")
+//    stl = "stlport_static"
+//}
+
+//android.buildTypes {
+//    release {
+//        minifyEnabled = false
+//        proguardFiles.add(file('proguard-rules.txt'))
+//    }
+//}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+
+
+
+    // CameraX
+    def camerax_version = "1.0.0-alpha01"
+    implementation "androidx.camera:camera-core:${camerax_version}"
+    implementation "androidx.camera:camera-camera2:${camerax_version}"
+}
